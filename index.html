@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>오마이컴퍼니 - 일상에 가치를 더하는 펀딩 플랫폼 (시안 프레임)</title>
+  <!-- Pretendard CDN for standard modern Korean typography matching OhMyCompany -->
+  <link rel="stylesheet" as="style" crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <!-- FontAwesome 6 for crisp icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- =========================================================================
+       1. Top Announcement Bar (상단 공지 배너)
+       ========================================================================= -->
+  <aside class="top-banner" id="topBanner">
+    <div class="top-banner-inner">
+      <span class="banner-text">2026 우리동네 크라우드펀딩 참여기업 찾아요!</span>
+      <button type="button" class="banner-close-btn" id="btnBannerClose" aria-label="배너 닫기">✕</button>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       2. Global Header (상단 헤더 네비게이션)
+       ========================================================================= -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <!-- OhMyCompany Exact Logo -->
+        <a href="javascript:void(0)" class="site-logo" title="오마이컴퍼니">
+          <svg class="omc-logo-svg" viewBox="0 0 210 30" width="200" height="28" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <text x="0" y="22" font-family="'Pretendard', sans-serif" font-size="22" font-weight="900" fill="#4a5568"
+              letter-spacing="-0.5">OHMY</text>
+            <text x="76" y="22" font-family="'Pretendard', sans-serif" font-size="22" font-weight="900" fill="#4a5568"
+              letter-spacing="-0.5">C</text>
+            <!-- Sprout Leaf on O -->
+            <path d="M103 4 C100 1, 95 3, 96 8 C98 8, 102 7, 103 4 Z" fill="#26a475" />
+            <path d="M104 5 C107 2, 112 4, 111 9 C109 9, 105 8, 104 5 Z" fill="#26a475" />
+            <circle cx="103.5" cy="16" r="6" stroke="#26a475" stroke-width="3.5" fill="none" />
+            <text x="114" y="22" font-family="'Pretendard', sans-serif" font-size="22" font-weight="900" fill="#4a5568"
+              letter-spacing="-0.5">MPANY</text>
+          </svg>
+        </a>
+
+        <!-- Main Menus -->
+        <nav class="main-nav">
+          <a href="javascript:void(0)" class="nav-item active">후원하기</a>
+          <a href="javascript:void(0)" class="nav-item">투자하기</a>
+          <a href="javascript:void(0)" class="nav-item">오픈예정</a>
+          <a href="javascript:void(0)" class="nav-item">가이드</a>
+        </nav>
+      </div>
+
+      <div class="header-right">
+        <button type="button" class="header-search-btn" aria-label="검색">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <a href="javascript:void(0)" class="header-login-btn">로그인</a>
+        <a href="javascript:void(0)" class="btn-open-funding">펀딩 신청하기</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       Main Page Container
+       ========================================================================= -->
+  <main class="page-container">
+
+    <!-- 3. Category & Tag Navigation -->
+    <section class="category-tag-section">
+      <!-- [텍스트 수정]: 카테고리명을 변경하세요 -->
+      <div class="category-crumb">
+        <a href="javascript:void(0)" class="crumb-link">
+          <span class="chevron-icon">‹</span>
+          <span class="crumb-title">리빙</span>
+        </a>
+      </div>
+
+      <!-- [텍스트 수정]: 프로젝트 관련 해시태그를 변경하세요 -->
+      <div class="tag-chips-wrap">
+        <span class="tag-chip">석조여래좌상</span>
+        <span class="tag-chip">인센스홀더</span>
+        <span class="tag-chip">의성</span>
+        <span class="tag-chip">고운사</span>
+      </div>
+    </section>
+
+    <!-- 4. Project Hero Section (2 Columns: Left Visual Slot + Right Funding Overview) -->
+    <section class="project-hero-section">
+
+      <!-- ================= LEFT: MAIN IMAGE FRAME ================= -->
+      <!-- [사진 추가 방법]:
+           1) 웹 브라우저에서 아래 박스를 직접 클릭하면 컴퓨터에 있는 사진을 바로 골라 테스트해볼 수 있습니다.
+           2) 코드로 넣으려면: <img src="이미지파일경로.jpg" class="uploaded-img" alt="대표이미지"> 태그를 media-frame-box 안에 넣으세요. -->
+      <div class="hero-media-col">
+        <div class="media-frame-box drop-image-slot" id="mainHeroImageSlot" title="클릭하여 대표 사진을 등록/교체할 수 있습니다">
+          <input type="file" accept="image/*" class="slot-file-input" style="display: none;">
+
+          <div class="media-frame-placeholder">
+            <div class="frame-camera-icon">
+              <i class="fa-regular fa-image"></i>
+            </div>
+            <div class="frame-label-title">대표 이미지 / 영상 프레임</div>
+            <div class="frame-label-sub">권장 사이즈: 1200 x 900px (4:3 비율)</div>
+            <div class="frame-click-guide"><i class="fa-solid fa-arrow-up-from-bracket"></i> 클릭하여 사진을 바로 넣어볼 수 있습니다
+            </div>
+          </div>
+
+          <!-- Carousel Indicator Dots -->
+          <div class="slider-dots-bar">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= RIGHT: FUNDING STATS OVERVIEW ================= -->
+      <div class="hero-info-col">
+
+        <!-- [텍스트 수정]: 프로젝트 제목 및 한 줄 소개 입력 영역 -->
+        <div class="project-title-area">
+          <h1 class="project-main-title">
+            <!-- 제목 텍스트 교체 -->
+            의성 고운사의 기억을 피우다, 석조여래좌상 인센스홀더
+          </h1>
+        </div>
+
+        <!-- Funding Stats Box -->
+        <div class="funding-stats-box">
+          <div class="stats-label">모인 금액</div>
+          <div class="stats-numbers-row">
+            <div class="amount-wrap">
+              <!-- 모인 금액 숫자 교체 -->
+              <span class="amount-number">164,000</span><span class="amount-unit">원</span>
+            </div>
+            <div class="percentage-rate">
+              <!-- 달성률 퍼센트 교체 -->
+              <span class="rate-number">16</span>%
+            </div>
+          </div>
+
+          <!-- Progress Bar Line -->
+          <div class="funding-progress-track">
+            <div class="funding-progress-fill" style="width: 16%;"></div>
+          </div>
+
+          <!-- Backer Count -->
+          <div class="backers-count-row">
+            <span class="highlight-backers">4명</span>이 후원했어요
+          </div>
+        </div>
+
+        <!-- Details List (목표 금액, 펀딩 기간, 결제 시점, 펀딩 방식) -->
+        <dl class="funding-meta-list">
+          <div class="meta-row">
+            <dt class="meta-dt">
+              <span class="omc-check-icon">⌵</span> 목표 금액
+            </dt>
+            <!-- [텍스트 수정]: 목표 금액 -->
+            <dd class="meta-dd">1,000,000원</dd>
+          </div>
+
+          <div class="meta-row">
+            <dt class="meta-dt">
+              <span class="omc-check-icon">⌵</span> 펀딩 기간
+            </dt>
+            <!-- [텍스트 수정]: 펀딩 기간 및 남은 일수 -->
+            <dd class="meta-dd">
+              <span>2026-10-14 ~ 2026-11-12</span>
+              <span class="badge-dday">27일</span>
+            </dd>
+          </div>
+
+          <div class="meta-row">
+            <dt class="meta-dt">
+              <span class="omc-check-icon">⌵</span> 결제 시점
+            </dt>
+            <dd class="meta-dd">후원 시 즉시 결제</dd>
+          </div>
+
+          <div class="meta-row">
+            <dt class="meta-dt">
+              <span class="omc-check-icon">⌵</span> 펀딩 방식
+            </dt>
+            <dd class="meta-dd">
+              <span>무조건 리워드</span>
+              <span class="info-tooltip-icon" title="목표 금액 달성 여부와 상관없이 펀딩 마감일까지 모인 금액과 리워드가 제공되는 방식입니다.">ⓘ</span>
+            </dd>
+          </div>
+        </dl>
+
+        <!-- Action Buttons Row -->
+        <div class="hero-actions-row">
+          <!-- Heart Button (Hover only) -->
+          <button type="button" class="btn-action-icon btn-proto-hover" aria-label="좋아요">
+            <i class="fa-regular fa-heart"></i>
+            <span class="action-count">1</span>
+          </button>
+
+          <!-- Main CTA: 후원하기 Button (Hover only) -->
+          <button type="button" class="btn-primary-funding btn-proto-hover">
+            후원하기
+          </button>
+
+          <!-- Share Button (Hover only) -->
+          <button type="button" class="btn-action-icon btn-proto-hover" aria-label="공유하기">
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+            <span class="action-count">0</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         5. Sticky Navigation Tabs (프로젝트 소개 / 커뮤니티 / 후원자)
+         * 중요 요구사항: 확실하게 클릭 가능하며 탭 전환 완벽 작동
+         ========================================================================= -->
+    <nav class="sticky-tabs-nav" id="mainTabsNav">
+      <div class="tabs-inner">
+        <button type="button" class="tab-btn active" data-tab="tab-story" id="tabBtnStory">
+          프로젝트 소개
+        </button>
+        <button type="button" class="tab-btn" data-tab="tab-community" id="tabBtnCommunity">
+          커뮤니티
+        </button>
+        <button type="button" class="tab-btn" data-tab="tab-supporter" id="tabBtnSupporter">
+          후원자 <span class="tab-count-badge">4</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- =========================================================================
+         6. Content Columns Grid (Left Tab Panels + Right Sticky Sidebar)
+         ========================================================================= -->
+    <div class="content-columns-grid">
+
+      <!-- ================= LEFT COLUMN: TAB PANELS ================= -->
+      <div class="left-tab-panels">
+
+        <!-- =====================================================================
+             PANEL 1: 프로젝트 소개 (Project Story & Wireframe Slots)
+             ===================================================================== -->
+        <section class="tab-panel active" id="tab-story">
+
+          <!-- AI 요약 Card -->
+          <article class="ai-summary-card">
+            <div class="ai-summary-header">
+              <span class="ai-sparkle-icon">✦</span>
+              <span class="ai-title">AI 요약</span>
+            </div>
+            <!-- [텍스트 수정]: AI 요약 3가지 항목 수정 -->
+            <ul class="ai-bullet-list">
+              <li class="ai-bullet-item">
+                <span class="ai-dot">•</span>
+                <span class="ai-text">고운사 보물 제246호 석조여래좌상을 모티브로 한 인센스홀더입니다.</span>
+              </li>
+              <li class="ai-bullet-item">
+                <span class="ai-dot">•</span>
+                <span class="ai-text">3D 프린팅 기술로 석조여래좌상의 입체적 형태와 세부 조형미를 구현했습니다.</span>
+              </li>
+              <li class="ai-bullet-item">
+                <span class="ai-dot">•</span>
+                <span class="ai-text">인센스콘과 황동 인센스콘 받침이 포함되어 향을 피울 수 있습니다.</span>
+              </li>
+            </ul>
+          </article>
+
+          <!-- Story Visual Image Frame Slot 1 -->
+          <!-- [사진 추가 방법]: 박스를 클릭하거나 <img src="..."> 태그를 넣으세요 -->
+          <div class="story-image-frame drop-image-slot" style="min-height: 480px;" title="클릭하여 본문 사진을 넣어볼 수 있습니다">
+            <input type="file" accept="image/*" class="slot-file-input" style="display: none;">
+            <div class="media-frame-placeholder">
+              <i class="fa-regular fa-image"></i>
+              <div class="frame-label-title">본문 상세 비주얼 이미지 프레임 #1</div>
+              <div class="frame-label-sub">권장 가로 폭: 860px (자유로운 세로 길이)</div>
+              <div class="frame-click-guide"><i class="fa-solid fa-arrow-up-from-bracket"></i> 클릭하여 본문 사진 등록하기</div>
+            </div>
+          </div>
+
+          <!-- Blockquote Frame (인용구 영역) -->
+          <!-- [텍스트 수정]: 인용구 문구 변경 -->
+          <blockquote class="story-blockquote">
+            <div class="quote-icon-top">“</div>
+            <p class="quote-text">그 고민에서 이번 프로젝트가 시작되었습니다.</p>
+            <div class="quote-icon-bottom">”</div>
+          </blockquote>
+
+          <!-- Story Visual Image Frame Slot 2 (와이드 컷) -->
+          <div class="story-image-frame drop-image-slot" style="min-height: 400px;" title="클릭하여 본문 사진을 넣어볼 수 있습니다">
+            <input type="file" accept="image/*" class="slot-file-input" style="display: none;">
+            <div class="media-frame-placeholder">
+              <i class="fa-regular fa-image"></i>
+              <div class="frame-label-title">본문 상세 비주얼 이미지 프레임 #2 (와이드)</div>
+              <div class="frame-label-sub">권장 가로 폭: 1360px x 906px</div>
+              <div class="frame-click-guide"><i class="fa-solid fa-arrow-up-from-bracket"></i> 클릭하여 본문 사진 등록하기</div>
+            </div>
+          </div>
+
+          <!-- Story Intro Paragraphs -->
+          <!-- [텍스트 수정]: 본문 스토리 단락 수정 -->
+          <div class="story-text-block">
+            <p>고운사의 문화유산 가운데 <strong>보물 제246호 고운사 석조여래좌상</strong>의 모습을 3D 기술로 구현하여, 일상에서 사용할 수 있는 인센스홀더로 제작했습니다.
+              <strong><u>석조여래좌상의 형태와 특징</u>을 살리면서</strong> <strong>인센스콘을 피울 수 있도록 구성</strong>하여, <strong>사용하지 않을 때에는 하나의
+                문화유산 오브제</strong>로 공간에 놓아둘 수 있도록 만들었습니다.
+            </p>
+
+            <p>인센스에 불을 붙이면 작은 연기가 천천히 피어오릅니다.<br>향을 피우며 잠시 머무는 그 시간이, <strong>고운사와 그곳에 남아 있는 문화유산을 한 번 더 떠올리는 시간이 되었으면
+                합니다.</strong></p>
+          </div>
+
+          <!-- Story Visual Image Frame Slot 3 -->
+          <div class="story-image-frame drop-image-slot" style="min-height: 440px;" title="클릭하여 본문 사진을 넣어볼 수 있습니다">
+            <input type="file" accept="image/*" class="slot-file-input" style="display: none;">
+            <div class="media-frame-placeholder">
+              <i class="fa-regular fa-image"></i>
+              <div class="frame-label-title">본문 상세 비주얼 이미지 프레임 #3</div>
+              <div class="frame-label-sub">제품 디자인 상세 / 디테일 확대 컷 프레임</div>
+              <div class="frame-click-guide"><i class="fa-solid fa-arrow-up-from-bracket"></i> 클릭하여 본문 사진 등록하기</div>
+            </div>
+          </div>
+
+          <!-- Feature Points (선택해야 하는 이유) -->
+          <!-- [텍스트 수정]: 제품 특장점 포인트 1~4 수정 -->
+          <div class="story-features-section">
+            <h2 class="features-main-heading">
+              고운사 석조여래좌상 인센스홀더를 <strong>선택해야 하는 이유</strong>
+            </h2>
+
+            <div class="feature-item-row">
+              <div class="feature-title">하나, 특별한 이야기</div>
+              <div class="feature-desc">실제 국가유산인 고운사 석조여래좌상을 모티브로 한 문화상품</div>
+            </div>
+
+            <div class="feature-item-row">
+              <div class="feature-title">둘, 감각적인 디자인</div>
+              <div class="feature-desc">3D 프린팅 기술과 다채로운 색상으로 완성한 특별한 인테리어 오브제</div>
+            </div>
+
+            <div class="feature-item-row">
+              <div class="feature-title">셋, 실용적인 구성</div>
+              <div class="feature-desc">인센스콘과 황동 받침이 포함되어 일상에서 사용할 수 있는 인센스홀더 세트</div>
+            </div>
+
+            <div class="feature-item-row">
+              <div class="feature-title">넷, 소장하는 가치</div>
+              <div class="feature-desc">문화유산의 아름다움과 고운사의 기억을 간직할 수 있는 의미 있는 생활소품</div>
+            </div>
+          </div>
+
+          <!-- Story Visual Image Frame Slot 4 (패키지 / 세부 구성) -->
+          <div class="story-image-frame drop-image-slot" style="min-height: 380px;" title="클릭하여 본문 사진을 넣어볼 수 있습니다">
+            <input type="file" accept="image/*" class="slot-file-input" style="display: none;">
+            <div class="media-frame-placeholder">
+              <i class="fa-regular fa-image"></i>
+              <div class="frame-label-title">본문 상세 비주얼 이미지 프레임 #4 (패키징 및 구성품)</div>
+              <div class="frame-label-sub">구성품 실물 및 포장 패키지 컷 프레임</div>
+              <div class="frame-click-guide"><i class="fa-solid fa-arrow-up-from-bracket"></i> 클릭하여 본문 사진 등록하기</div>
+            </div>
+          </div>
+
+          <!-- Additional Content Sections (후원금 사용계획 / 진행자 소개 / 진행일정) -->
+          <div class="story-sub-section">
+            <h3 class="story-sub-heading">후원금 사용계획</h3>
+            <p>이번 펀딩은 단순히 하나의 인센스홀더를 소개하는 프로젝트가 아닙니다. 재난을 겪은 문화유산의 이야기를 잊지 않고, 우리의 일상 속에서 새로운 방식으로 기억을 이어가기 위한 프로젝트입니다.
+            </p>
+            <p><strong>고운사의 기억이 사라지지 않도록, 향과 함께 그 이야기를 이어가 주세요.</strong></p>
+          </div>
+
+          <div class="story-sub-section">
+            <h3 class="story-sub-heading">진행자 소개</h3>
+            <p>㈜한결은 국가유산 보존처리와 유물 실측·기록화 분야의 전문성을 기반으로 문화유산 교육·체험 콘텐츠와 문화상품을 개발하는 사회적기업입니다. 박물관 및 문화기관 등과 협력하여 유물 보존처리와
+              기록화 업무를 수행하는 한편, 지역의 문화유산을 현대적인 방식으로 재해석한 교육키트, 3D 퍼즐·키링, 인센스홀더 등 다양한 문화상품을 개발하고 있습니다. 전문적인 보존·기록의 영역에서
+              나아가 문화유산을 누구나 쉽고 친근하게 접하고 일상에서 경험할 수 있도록 교육·체험·상품으로 확장하며, 지역 문화유산의 가치를 알리고 지속가능하게 활용하는 것을 목표로 하고 있습니다.</p>
+          </div>
+
+          <div class="story-sub-section">
+            <h3 class="story-sub-heading">프로젝트 진행일정</h3>
+            <div class="schedule-detail-box">
+              <p><strong>펀딩기간 :</strong> 2026년 10월 12일 ~ 2026년 11월 12일</p>
+              <p><strong>리워드 배송 :</strong> 매주 화요일 일괄 배송</p>
+              <p><strong>리워드 배송비 :</strong> 무료</p>
+              <p><strong>문의처 :</strong> 이메일 ns1004sn@naver.com | 연락처 010-7181-6741</p>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- =====================================================================
+             PANEL 2: 커뮤니티 (Community Subtabs: 최근 소식 / Q&A / 프로젝트 후기)
+             ===================================================================== -->
+        <section class="tab-panel" id="tab-community">
+
+          <!-- Subtab Buttons -->
+          <div class="community-subnav">
+            <button type="button" class="subtab-btn active" data-subtab="sub-news">
+              최근 소식
+            </button>
+            <button type="button" class="subtab-btn" data-subtab="sub-qa">
+              Q&A
+            </button>
+            <button type="button" class="subtab-btn" data-subtab="sub-reviews">
+              프로젝트 후기
+            </button>
+          </div>
+
+          <!-- Subpanel 1: 최근 소식 -->
+          <div class="community-subpanel active" id="sub-news">
+            <div class="empty-state-card">
+              <p class="empty-text-msg">등록된 최근소식이 없습니다.</p>
+            </div>
+          </div>
+
+          <!-- Subpanel 2: Q&A -->
+          <div class="community-subpanel" id="sub-qa">
+            <div class="qa-input-card">
+              <textarea placeholder="메이커에게 질문할 내용을 남겨주세요." rows="3"></textarea>
+              <div class="qa-submit-row">
+                <button type="button" class="btn-qa-submit btn-proto-hover">문의 등록</button>
+              </div>
+            </div>
+            <div class="empty-state-card">
+              <p class="empty-text-msg">등록된 문의 내역이 없습니다.</p>
+            </div>
+          </div>
+
+          <!-- Subpanel 3: 프로젝트 후기 -->
+          <div class="community-subpanel" id="sub-reviews">
+            <div class="empty-state-card">
+              <p class="empty-text-msg">등록된 프로젝트 후기가 없습니다.</p>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- =====================================================================
+             PANEL 3: 후원자 (Backer List: 오마이컴퍼니 실제 데이터 레이아웃)
+             ===================================================================== -->
+        <section class="tab-panel" id="tab-supporter">
+          <div class="supporter-list-wrap">
+
+            <!-- Supporter 1 -->
+            <div class="supporter-row-card">
+              <div class="supporter-avatar">
+                <div class="avatar-circle-icon"><i class="fa-solid fa-user"></i></div>
+              </div>
+              <div class="supporter-body">
+                <div class="supporter-meta-line">
+                  <span class="supporter-name">키다리 후원자</span>
+                  <span class="supporter-date">2026-10-15 15:30</span>
+                </div>
+                <div class="supporter-comment">응원합니다!</div>
+              </div>
+              <div class="supporter-amount-badge">
+                23,500원 후원
+              </div>
+            </div>
+
+            <!-- Supporter 2 -->
+            <div class="supporter-row-card">
+              <div class="supporter-avatar">
+                <div class="avatar-circle-icon"><i class="fa-solid fa-user"></i></div>
+              </div>
+              <div class="supporter-body">
+                <div class="supporter-meta-line">
+                  <span class="supporter-name">임태화</span>
+                  <span class="supporter-date">2026-10-15 02:36</span>
+                </div>
+                <div class="supporter-comment">의미 있는 프로젝트 응원합니다.</div>
+              </div>
+              <div class="supporter-amount-badge">
+                53,500원 후원
+              </div>
+            </div>
+
+            <!-- Supporter 3 -->
+            <div class="supporter-row-card">
+              <div class="supporter-avatar">
+                <div class="avatar-circle-icon"><i class="fa-solid fa-user"></i></div>
+              </div>
+              <div class="supporter-body">
+                <div class="supporter-meta-line">
+                  <span class="supporter-name">후원자</span>
+                  <span class="supporter-date">2026-10-14 21:18</span>
+                </div>
+                <div class="supporter-comment">기대됩니다!</div>
+              </div>
+              <div class="supporter-amount-badge">
+                43,500원 후원
+              </div>
+            </div>
+
+            <!-- Supporter 4 -->
+            <div class="supporter-row-card">
+              <div class="supporter-avatar">
+                <div class="avatar-circle-icon"><i class="fa-solid fa-user"></i></div>
+              </div>
+              <div class="supporter-body">
+                <div class="supporter-meta-line">
+                  <span class="supporter-name">후원자</span>
+                  <span class="supporter-date">2026-10-14 10:04</span>
+                </div>
+                <div class="supporter-comment">응원합니다.</div>
+              </div>
+              <div class="supporter-amount-badge">
+                43,500원 후원
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+
+
+      <!-- =====================================================================
+           RIGHT COLUMN: STICKY SIDEBAR (창작자 소개 & 리워드 선택 목록)
+           ===================================================================== -->
+      <aside class="right-sidebar">
+
+        <!-- 1. Maker / Creator Card -->
+        <!-- [텍스트 수정]: 창작자 정보 수정 -->
+        <section class="maker-profile-card">
+          <div class="maker-header-row">
+            <div class="maker-avatar-drop drop-image-slot" title="클릭하여 프로필 사진을 넣어볼 수 있습니다">
+              <input type="file" accept="image/*" class="slot-file-input" style="display: none;">
+              <div class="maker-avatar-icon"><i class="fa-solid fa-user"></i></div>
+            </div>
+            <div class="maker-title-col">
+              <div class="maker-name">주식회사 한결</div>
+              <div class="badge-project-count">진행한 프로젝트 1</div>
+            </div>
+          </div>
+
+          <p class="maker-bio-text">
+            (주)한결은 문화유산 보존처리와 기록을 기반으로 교육·체험 콘텐츠와 문화유산 상품을 개발하는 사회적기업입니다. 대표는 문화유산 보존처리 및 교육 분야에서 13년 이상 현장 경험을 쌓은 전문가로,
+            문화유산의 가치를 일상에서 새롭게 경험하고 이어갈 수 있도록 다양한 콘텐츠를 개발하고 있습니다.
+          </p>
+
+          <div class="maker-metrics-grid">
+            <div class="metric-item">
+              <span class="m-label">팔로워</span>
+              <span class="m-val">0</span>
+            </div>
+            <div class="metric-item">
+              <span class="m-label">응원</span>
+              <span class="m-val">4</span>
+            </div>
+            <div class="metric-item">
+              <span class="m-label">후기</span>
+              <span class="m-val">0</span>
+            </div>
+          </div>
+
+          <div class="maker-actions-grid">
+            <button type="button" class="btn-maker-follow btn-proto-hover">
+              + 팔로우
+            </button>
+            <button type="button" class="btn-maker-inquiry btn-proto-hover">
+              문의하기
+            </button>
+          </div>
+
+          <button type="button" class="btn-maker-expand" id="btnMakerExpand">
+            더보기 ⌵
+          </button>
+        </section>
+
+
+        <!-- 2. Reward Selection Cards (오마이컴퍼니 리워드 카드 구조) -->
+        <section class="rewards-container">
+
+          <!-- Reward Card 1 -->
+          <!-- [텍스트 수정]: 1번 리워드 금액, 이름, 옵션 수정 -->
+          <article class="omc-reward-card btn-proto-hover">
+            <div class="reward-card-top">
+              <div class="reward-backers-tag">
+                <span class="smile-icon">☺</span> 2명 후원
+              </div>
+              <div class="reward-stock-badge">
+                78개 남음
+              </div>
+            </div>
+
+            <div class="reward-card-price">
+              50,000원+
+            </div>
+
+            <div class="reward-card-title">
+              고운사 석조여래좌상 인센스홀더(대좌)
+            </div>
+
+            <dl class="reward-info-dl">
+              <div class="r-row">
+                <dt><span class="omc-check">⌵</span> 배송일</dt>
+                <dd>매주 화요일 일괄배송</dd>
+              </div>
+              <div class="r-row">
+                <dt><span class="omc-check">⌵</span> 옵션</dt>
+                <dd>
+                  <ul class="reward-vertical-options">
+                    <li>네이비</li>
+                    <li>퍼플</li>
+                    <li>핑크</li>
+                    <li>블루</li>
+                    <li>연핑크</li>
+                    <li>민트</li>
+                    <li>연노랑</li>
+                    <li>카키</li>
+                  </ul>
+                </dd>
+              </div>
+            </dl>
+          </article>
+
+          <!-- Reward Card 2 -->
+          <!-- [텍스트 수정]: 2번 리워드 수정 -->
+          <article class="omc-reward-card btn-proto-hover">
+            <div class="reward-card-top">
+              <div class="reward-backers-tag">
+                <span class="smile-icon">☺</span> 0명 후원
+              </div>
+              <div class="reward-stock-badge">
+                80개 남음
+              </div>
+            </div>
+
+            <div class="reward-card-price">
+              40,000원+
+            </div>
+
+            <div class="reward-card-title">
+              고운사 석조여래좌상 인센스홀더(대)
+            </div>
+
+            <dl class="reward-info-dl">
+              <div class="r-row">
+                <dt><span class="omc-check">⌵</span> 배송일</dt>
+                <dd>매주 화요일 일괄배송</dd>
+              </div>
+              <div class="r-row">
+                <dt><span class="omc-check">⌵</span> 옵션</dt>
+                <dd>
+                  <ul class="reward-vertical-options">
+                    <li>네이비</li>
+                    <li>퍼플</li>
+                    <li>핑크</li>
+                    <li>블루</li>
+                    <li>연핑크</li>
+                    <li>민트</li>
+                    <li>연노랑</li>
+                    <li>카키</li>
+                  </ul>
+                </dd>
+              </div>
+            </dl>
+          </article>
+
+          <!-- Reward Card 3 -->
+          <!-- [텍스트 수정]: 3번 리워드 수정 -->
+          <article class="omc-reward-card btn-proto-hover">
+            <div class="reward-card-top">
+              <div class="reward-backers-tag">
+                <span class="smile-icon">☺</span> 1명 후원
+              </div>
+              <div class="reward-stock-badge">
+                79개 남음
+              </div>
+            </div>
+
+            <div class="reward-card-price">
+              30,000원+
+            </div>
+
+            <div class="reward-card-title">
+              고운사 석조여래좌상 인센스홀더(중)
+            </div>
+
+            <dl class="reward-info-dl">
+              <div class="r-row">
+                <dt><span class="omc-check">⌵</span> 배송일</dt>
+                <dd>매주 화요일 일괄배송</dd>
+              </div>
+              <div class="r-row">
+                <dt><span class="omc-check">⌵</span> 옵션</dt>
+                <dd>
+                  <ul class="reward-vertical-options">
+                    <li>네이비</li>
+                    <li>퍼플</li>
+                    <li>핑크</li>
+                    <li>블루</li>
+                    <li>연핑크</li>
+                    <li>민트</li>
+                    <li>연노랑</li>
+                    <li>카키</li>
+                  </ul>
+                </dd>
+              </div>
+            </dl>
+          </article>
+
+        </section>
+
+      </aside>
+
+    </div>
+
+  </main>
+
+  <!-- =========================================================================
+       7. Global Footer (오마이컴퍼니 하단 푸터)
+       ========================================================================= -->
+  <footer class="site-footer">
+    <!-- Notice Bar -->
+    <div class="footer-notice-strip">
+      <div class="footer-content-inner notice-flex">
+        <div class="notice-col">
+          <span class="footer-notice-title">공지사항</span>
+          <a href="javascript:void(0)" class="footer-notice-text">2026년 사회적경제 크라우드펀딩 사업 참여기업 모집</a>
+        </div>
+        <div class="app-buttons-col">
+          <a href="javascript:void(0)" class="btn-app-store">
+            <i class="fa-brands fa-google-play"></i> Google Play
+          </a>
+          <a href="javascript:void(0)" class="btn-app-store">
+            <i class="fa-brands fa-apple"></i> App Store
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Footer Body -->
+    <div class="footer-main-body">
+      <div class="footer-content-inner">
+
+        <div class="footer-nav-bar">
+          <a href="javascript:void(0)">홈으로</a>
+          <a href="javascript:void(0)">회사 소개</a>
+          <a href="javascript:void(0)">이용약관</a>
+          <a href="javascript:void(0)" class="font-bold">개인정보보호정책</a>
+          <a href="javascript:void(0)">이용가이드</a>
+        </div>
+
+        <div class="footer-brand-social-row">
+          <div class="footer-logo">
+            <span class="footer-logo-text">OHMY<span class="text-omc-green">C🌱MPANY</span></span>
+          </div>
+          <div class="footer-sns-icons">
+            <a href="javascript:void(0)" class="sns-circle" aria-label="이메일"><i class="fa-regular fa-envelope"></i></a>
+            <a href="javascript:void(0)" class="sns-circle" aria-label="카카오톡"><i class="fa-solid fa-comment"></i></a>
+            <a href="javascript:void(0)" class="sns-circle" aria-label="네이버블로그"><i
+                class="fa-brands fa-blogger-b"></i></a>
+            <a href="javascript:void(0)" class="sns-circle" aria-label="인스타그램"><i
+                class="fa-brands fa-instagram"></i></a>
+            <a href="javascript:void(0)" class="sns-circle" aria-label="페이스북"><i
+                class="fa-brands fa-facebook-f"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-info-details">
+          <p>서울시 서대문구 이화여대8길 3 연화프라자 3층</p>
+          <p>
+            대표번호: 02-388-2556 &nbsp;|&nbsp;
+            법인명: (주)오마이컴퍼니 &nbsp;|&nbsp;
+            대표자명: 성진경, 한송이 &nbsp;|&nbsp;
+            사업자등록번호: 209-81-56911 &nbsp;|&nbsp;
+            통신판매업신고번호: 2023-서울서대문-1316
+          </p>
+          <p>이메일: omc@ohmycompany.com</p>
+        </div>
+
+        <div class="footer-disclaimer-text">
+          <p>(주)오마이컴퍼니는 크라우드펀딩 플랫폼을 운영하는 중개자(온라인소액투자중개업, 통신판매업중개자)로서 프로젝트를 진행하는 당사자가 아니기에, 투자로 인한 손실 보전, 리워드 제공을 담보해 드리지
+            못합니다.</p>
+          <p class="copyright-line">© 2026. 오마이컴퍼니. All rights reserved.</p>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll-to-Top Floating Button -->
+  <button type="button" class="btn-scroll-top" id="btnScrollTop" aria-label="맨 위로 이동">
+    ↑
+  </button>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
